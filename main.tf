@@ -47,7 +47,7 @@ resource "aws_internet_gateway" "demo" {
 
 # Security Group
 resource "aws_security_group" "demo" {
-  name        = "sg-terraform-demo"
+  name = "demo-security-group"
   description = "Security group for demo EC2"
   vpc_id      = aws_vpc.demo.id
 
