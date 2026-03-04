@@ -11,6 +11,7 @@ provider "aws" {
   region = var.aws_region
 }
 
+
 # VPC
 resource "aws_vpc" "demo" {
   cidr_block           = "10.0.0.0/16"
@@ -67,7 +68,7 @@ resource "aws_security_group" "demo" {
 # EC2 Instance
 resource "aws_instance" "demo" {
   ami                    = var.ami_id
-  instance_type          = "t2.micro"
+  instance_type          = var.instance_type
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.demo.id]
 
