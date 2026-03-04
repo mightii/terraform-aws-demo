@@ -68,7 +68,7 @@ resource "aws_security_group" "demo" {
 # EC2 Instance
 module "app_server" {
   source  = "app.terraform.io/Demo_Terraform_Manu/ec2-instance/aws"
-  version = "1.0.0"
+  version = "1.0.1"
 
   name               = "ec2-terraform-demo"
   ami_id             = var.ami_id
