@@ -5,10 +5,10 @@ output "vpc_id" {
 
 output "ec2_public_ip" {
   description = "Public IP of the EC2 instance"
-  value       = aws_instance.demo.public_ip
+  value       = module.app_server.public_ip
 }
 
 output "ec2_instance_id" {
   description = "Instance ID of the EC2"
-  value       = aws_instance.demo.id
+  value       = module.app_server.instance_id
 }
