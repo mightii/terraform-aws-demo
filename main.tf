@@ -66,15 +66,13 @@ resource "aws_security_group" "demo" {
 }
 
 # EC2 Instance
-resource "aws_instance" "demo" {
-  ami                    = var.ami_id
-  instance_type          = var.instance_type
-  subnet_id              = aws_subnet.public.id
-  vpc_security_group_ids = [aws_security_group.demo.id]
+module "app_server" {
+  source  = "app.terraform.io/Demo_Terraform_Manu/ec2-instance/aws"
+  version = "1.0.0"
 
-  tags = {
-    Name        = "ec2-terraform-demo"
-    Environment = var.environment
-    ManagedBy   = "Terraform"
-  }
+  name               = "ec2-terraform-demo"
+  ami_id             = var.ami_id
+  instance_type      = var.instance_type
+  subnet_id          = aws_subnet.public.id
+  security_group_ids = [aws_security_group.demo.id]
 }
